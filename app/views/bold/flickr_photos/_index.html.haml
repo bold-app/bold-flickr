@@ -1,0 +1,8 @@
+%div
+  = bold_pagination_for photos, remote: true, params: { controller: 'bold/flickr_photos', action: 'index' }
+
+%div
+  = render partial: 'bold/flickr_photos/photo', collection: photos
+
+%div{style: 'clear: left;'}
+  = bold_pagination_for photos, remote: true, params: { controller: 'bold/flickr_photos', action: 'index' }

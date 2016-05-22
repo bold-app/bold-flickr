@@ -1,0 +1,3 @@
+$('.flickr li.photostream a').tab('show');
+$('#photostream').html('<%= j render 'bold/flickr_photos/index', photos: @photos %>');
+window.flickr.markSelectedPhotos();

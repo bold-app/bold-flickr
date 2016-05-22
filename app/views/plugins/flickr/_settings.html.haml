@@ -1,0 +1,8 @@
+.row
+  .col-xs-12
+    - if Bold::Flickr.global_config?
+      %p= t '.info'
+    = f.config_input :api_key, as: :string, label: t('.api_key')
+    = f.config_input :api_secret, as: :string, label: t('.api_secret')
+    %p= link_to t('.flickr_link'), 'https://www.flickr.com/services/apps/create/'
+    %p= raw t '.register_info', link: bold_site_flickr_callback_url(current_site)

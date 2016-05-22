@@ -1,0 +1,13 @@
+
+%h3
+  = @album.title
+  %span.small= link_to t('common.back'), bold_site_flickr_albums_path(current_site), remote: true
+
+%div
+  = bold_pagination_for @photos, remote: true
+
+%div
+  = render partial: 'bold/flickr_photos/photo', collection: @photos
+
+%div{style: 'clear: left;'}
+  = bold_pagination_for @photos, remote: true

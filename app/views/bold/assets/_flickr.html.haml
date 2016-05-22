@@ -1,0 +1,47 @@
+- if Bold::Flickr.configured?
+  - if flickr.authorized?
+
+    %h2= t '.add_from_flickr'
+    %div.flickr
+      %ul.nav.nav-tabs{role: 'tablist'}
+        %li.photostream.active{role: 'presentation'}
+          = link_to t('.li.photostream'), bold_site_flickr_photos_path(current_site),
+              role: 'tab', 'aria-controls': 'photostream', 'data-target': '#photostream', remote: true
+
+        %li.albums{role: 'presentation'}
+          = link_to t('.li.albums'), bold_site_flickr_albums_path(current_site),
+              role: 'tab', 'aria-controls': 'albums', 'data-target': '#albums', remote: true
+
+        %li.import{role: 'presentation'}
+          %a{href: '#import', role:'tab', 'aria-controls': 'import'}
+            Import
+
+      .tab-content
+
+        #photostream.photos.tab-pane.active{role: 'tabpanel'}
+          = render 'bold/flickr_photos/index', photos: flickr.photos
+
+
+        #albums.photos.tab-pane{role: 'tabpanel'}
+
+
+        #import.tab-pane{role: 'tabpanel'}
+          = form_tag bold_site_flickr_photos_path(current_site) do
+            = hidden_field_tag 'asset_ids'
+            .info
+              %p= t '.select_photos'
+            .import-btn
+              = button '.import_photos'
+            .selected-photos
+
+
+  - elsif url = flickr_authorize_url
+    %h2= t '.authorization_required'
+    %p= link_to t('.click_to_authorize'), url, class: 'btn btn-default'
+
+  - else
+    %h2= t '.add_from_flickr'
+    %p= t '.error'
+
+- else
+  %p= t '.not_configured'

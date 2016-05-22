@@ -1,0 +1,30 @@
+en:
+  bold:
+    assets:
+      flickr:
+        add_from_flickr: Add from Flickr
+        authorization_required: Authorization required
+        clear_selection: Clear selection
+        click_to_authorize: "Click here to connect Bold with your Flickr account"
+        error: Could not connect to Flickr.
+        import_photos: Start Import
+        select_photos: Photos you select from your photo stream or albums will appear here until you deselect or import them.
+        li:
+          photostream: Photo Stream
+          albums: Albums
+  flash:
+    bold:
+      assets:
+        flickr:
+          connect_success: "Success!"
+          connect_failure: "Flickr connect failed."
+  plugins:
+    flickr:
+      menu_item:
+        flickr: Flickr
+      settings:
+        api_key: API key
+        api_secret: API secret
+        info: The plugin is already configured with a global API key and secret. You may override these with your own here if you wish.
+        flickr_link: In order to get your key and secret, click here to register for API access on Flickr.
+        register_info: "When registering your app, select <em>Web Application</em> and use <code>%{link}</code> as the callback URL."
