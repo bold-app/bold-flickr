@@ -1,0 +1,1 @@
+copyright-header -o . --license AGPL3 --guess-extension -a "app/assets:app/controllers/:app/jobs/:app/helpers/:test/"  --copyright-software "bold-flickr" --copyright-holder "Jens Krämer <jk@jkraemer.net>" --copyright-year 2016 --copyright-software-description 'a Flickr plugin for Bold'
