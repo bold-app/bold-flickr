@@ -18,6 +18,11 @@ en:
         flickr:
           connect_success: "Success!"
           connect_failure: "Flickr connect failed."
+      flickr_photos:
+        importing:
+          one: Importing one photo.
+          other: "Importing %{count} photos."
+
   plugins:
     flickr:
       menu_item:

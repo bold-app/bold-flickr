@@ -31,7 +31,7 @@ module Bold
       if ids.any?
         photos = flickr.get_photo_details ids
         if photos.any?
-          FlickrImportJob.perform_later current_site, photos
+          FlickrImportJob.perform_later current_site, current_user, photos
           flash[:notice] = I18n.t('flash.bold.flickr_photos.importing', count: photos.size)
         end
       end
