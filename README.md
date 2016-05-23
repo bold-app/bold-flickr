@@ -10,7 +10,7 @@ Installation
 
 Add to your `Gemfile.local`:
 
-    gem 'flickraw', github: 'bold-app/flickraw'
+    gem 'flickraw', github: 'bold-app/flickraw', branch: 'bold'
     gem 'bold-flickr', github: 'bold-app/bold-flickr'
 
 Run `bundle install`, commit `Gemfile.local` and `Gemfile.lock`, deploy.
