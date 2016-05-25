@@ -108,7 +108,7 @@ module Bold
             to_hash.
             slice('id', 'title', 'description').
             merge(
-              'tags'       => flickr_photo.tags.to_a,
+              'tags'       => flickr_photo.tags.to_a.map{|t|t['raw']}.join(','),
               'url'        => FlickRaw.url_o(flickr_photo),
               'date_taken' => flickr_photo.dates.taken,
               'location'   => flickr_photo.location.to_hash.slice('latitude',

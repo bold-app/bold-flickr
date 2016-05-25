@@ -45,6 +45,7 @@ class FlickrImportJob < ActiveJob::Base
       asset.caption  = photo['description'] if asset.caption.blank?
       asset.taken_on = photo['date_taken']  if asset.taken_on.blank?
       asset.meta['flickr_photo_id'] = photo['id']
+      asset.tag_list = photo['tags']
       if asset.lat.blank? && asset.lon.blank? && loc = photo['location']
         asset.lat, asset.lon = loc['latitude'], loc['longitude']
       end
