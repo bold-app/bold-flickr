@@ -30,6 +30,7 @@ class FlickrImportJob < ActiveJob::Base
   def perform(site, user, photos)
     logger.info "importing photos:\n#{photos.inspect}"
     @user = user
+    @site = site
     Bold.with_site site do
       photos.each{|p| import p}
     end
@@ -38,7 +39,7 @@ class FlickrImportJob < ActiveJob::Base
   private
 
   def import(photo)
-    asset = Site.current.assets.build remote_file_url: photo['url']
+    asset = @site.assets.build remote_file_url: photo['url']
     asset.creator = @user
     if asset.save
       asset.title    = photo['title']       if asset.title.blank?

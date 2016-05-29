@@ -103,17 +103,19 @@ module Bold
 
       def get_photo_details(ids)
         ids.map do |id|
-          flickr_photo = photo(id)
-          flickr_photo&.
-            to_hash.
-            slice('id', 'title', 'description').
-            merge(
-              'tags'       => flickr_photo.tags.to_a.map{|t|t['raw']}.join(','),
-              'url'        => FlickRaw.url_o(flickr_photo),
-              'date_taken' => flickr_photo.dates.taken,
-              'location'   => flickr_photo.location.to_hash.slice('latitude',
-                                                                  'longitude')
-            )
+          next unless flickr_photo = photo(id)
+          flickr_photo.to_hash.slice('id', 'title', 'description').tap do |details|
+            details['url'] = FlickRaw.url_o(flickr_photo)
+            if tags = flickr_photo['tags']
+              details['tags'] = tags.to_a.map{|t|t['raw']}.join(',')
+            end
+            if dates = flickr_photo['dates']
+              details['date_taken'] = dates.to_hash['taken']
+            end
+            if location = flickr_photo['location']
+              details['location'] = location.to_hash.slice('latitude', 'longitude')
+            end
+          end
         end.compact
       end
 
