@@ -1,3 +1,3 @@
 source "https://rubygems.org"
 gemspec
-gem 'flickraw', github: 'bold-app/flickraw'
+gem 'flickraw', github: 'bold-app/flickraw', branch: 'bold'
